@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Information Form</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <h1>Patient Information Form</h1>
+    <form id="patientForm" action="submit.php" method="post" enctype="multipart/form-data">
+        <label for="f_name">First Name:</label>
+        <input type="text" id="f_name" name="f_name" required><br><br>
+
+        <label for="m_name">Middle Name:</label>
+        <input type="text" id="m_name" name="m_name"><br><br>
+
+        <label for="l_name">Last Name:</label>
+        <input type="text" id="l_name" name="l_name" required><br><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select><br><br>
+
+        <label for="bloodgroup">Blood Group:</label>
+        <input type="text" id="bloodgroup" name="bloodgroup" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="file">Upload File:</label>
+        <input type="file" id="file" name="file"><br><br>
+
+        <label for="doctor_name">Doctor's Name:</label>
+        <input type="text" id="doctor_name" name="doctor_name" required><br><br>
+
+        <label for="hospital_name">Hospital Name:</label>
+        <input type="text" id="hospital_name" name="hospital_name" required><br><br>
+
+        <label for="disease">Disease:</label>
+        <input type="text" id="disease" name="disease" required><br><br>
+
+        <label for="form_fill_date">Form Fill Date:</label>
+        <input type="date" id="form_fill_date" name="form_fill_date" required><br><br>
+
+        <label for="verified_date">Verified Date:</label>
+        <input type="date" id="verified_date" name="verified_date"><br><br>
+
+        <!-- Preview and Download PDF Button -->
+        <button id="previewPDF">Preview and Download PDF</button>
+
+        <!-- Hidden submit button -->
+        <input type="submit" id="submitButton" style="display: none;">
+    </form>
+
+    <!-- Container for Preview -->
+    <div id="previewContainer"></div>
+
+    <!-- Include jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <!-- Include custom JavaScript -->
+    <script src="form.js"></script>
+</body>
+</html>

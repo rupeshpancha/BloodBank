@@ -1,0 +1,60 @@
+/* styles.css */
+
+/* Flexbox container for the two side-by-side tables */
+.big-box {
+    display: flex;
+}
+
+/* Styles for the left and right tables */
+.left-table1,
+.right-table1 {
+    flex: 1;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Styles for the left table header */
+.left-table1 .header1 {
+    background: #de1f26; /* Header background color for left table */
+    color: #ffffff; /* Text color for header in left table */
+}
+
+/* Styles for the tables */
+.table1 {
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Styles for table rows */
+.row1 {
+    display: flex;
+    flex-wrap: wrap; /* Allow flex items to wrap */
+    border-bottom: 1px solid #ccc; /* Adds a bottom border to each row */
+}
+
+/* Styles for the divider line between rows */
+.row1:not(:last-child) {
+    margin-bottom: 5px; /* Space between rows */
+}
+
+/* Styles for the header row */
+.header1 {
+    font-weight: bold;
+    background-color: #f0f0f0; /* Light background color for the header */
+}
+
+/* Styles for rows with green background */
+.green {
+    background: #27ae60;
+}
+
+/* Styles for individual cells in the table */
+.box {
+    flex: 1;
+    padding: 8px;
+}
