@@ -199,6 +199,7 @@ if (isset($_SESSION['success_message'])) {
             <?php
                     } else {
                         echo "<script>alert('Donor not found');</script>";
+                        echo "";
                     }
                 }
             } else {
