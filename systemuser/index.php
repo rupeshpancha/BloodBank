@@ -1,7 +1,21 @@
 <?php
 include('connection.php');
 session_start();
+
+$un = $_SESSION['un'];
+$role_id = $_SESSION['role_id'];
+
+if (!$un || !isset($role_id)) {
+    header("Location: login.php");
+    exit; 
+}
+
+if ($role_id == '2') {
+    header("Location: login.php");
+    exit; 
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,6 +50,11 @@ session_start();
             /* Prevent sidebar from shrinking */
             overflow-y: auto;
             /* Enable vertical scrolling for sidebar if needed */
+        }
+
+        .top {
+            text-align: center;
+            padding: 20px;
         }
 
         .sidebar ul {
@@ -137,14 +156,6 @@ session_start();
         }
     </style>
 </head>
-<?php
-$un = $_SESSION['un'];
-$role_id = $_SESSION['role_id'];
-if (!$un) {
-    header("Location:login.php");
-}
-
-?>
 
 <body>
     <div class="container">
@@ -165,6 +176,9 @@ if (!$un) {
             </ul>
         </div>
         <div class="content">
+            <div class="top">
+                <h1>Blood Bank Management System</h1>
+            </div>
             <h1> Welcome <?php echo $un ?></h1>
             <div class="btn-container">
                 <a href="donor_registeration.php" class="btn">Blood Donor Registration</a>

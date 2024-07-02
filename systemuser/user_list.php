@@ -230,9 +230,14 @@ if (!$un) {
             </div>
             <div class="column">
                 <h2>Users</h2>
-                <ul>
+                <ul style="list-style-type: none; padding: 0;">
                     <?php foreach ($users as $user) : ?>
-                        <li><?php echo htmlspecialchars($user); ?></li>
+                        <li style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #ddd;">
+                            <span><?php echo htmlspecialchars($user); ?></span>
+                            <span style="margin-left: auto;">
+                                <a href="delete_user.php?username=<?php echo urlencode($user); ?>" style="color: #f00; text-decoration: none;" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                            </span>
+                        </li>
                     <?php endforeach; ?>
                 </ul>
             </div>

@@ -5,10 +5,16 @@ session_start();
 $un = $_SESSION['un'];
 $role_id = $_SESSION['role_id'];
 
-if (!$un) {
-    header("Location:login.php");
-    exit();
+if (!$un || !isset($role_id)) {
+    header("Location: login.php");
+    exit; 
 }
+
+if ($role_id == '2') {
+    header("Location: login.php");
+    exit; 
+}
+?>
 
 // Check if the form is submitted
 if (isset($_POST['own_changepassword'])) {

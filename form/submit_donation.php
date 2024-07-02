@@ -23,10 +23,11 @@ $email = $_POST['email'];
 $address = $_POST['address'];
 $contact = $_POST['contact'];
 $form_fill_date = $_POST['form_fill_date'];
+$DOB = $_POST['DOB'];
 
 // Insert data into the database
-$sql = "INSERT INTO donor (f_name, m_name, l_name, gender, bloodgroup, email, address, contact, form_fill_date)
-VALUES ('$f_name', '$m_name', '$l_name', '$gender', '$bloodgroup', '$email', '$address', '$contact', '$form_fill_date')";
+$sql = "INSERT INTO donor (f_name, m_name, l_name, gender, bloodgroup, email, address, contact, form_fill_date,birth_date)
+VALUES ('$f_name', '$m_name', '$l_name', '$gender', '$bloodgroup', '$email', '$address', '$contact', '$form_fill_date','$DOB')";
 
 if ($conn->query($sql) === TRUE) {
     echo "<script>alert('Record added successfully.')</script>";

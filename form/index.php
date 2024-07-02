@@ -6,11 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Information Form</title>
     <link rel="stylesheet" href="form.css">
+    <script>
+        function validateContact() {
+            var contactInput = document.getElementById("contact");
+            var contactValue = contactInput.value;
+            var contactError = document.getElementById("contactError");
+
+            // Check if contact starts with '9' and has a maximum of 10 digits
+            if (!/^[9]\d{0,9}$/.test(contactValue)) {
+                contactError.style.display = "block";
+            } else {
+                contactError.style.display = "none";
+            }
+        }
+
+        function validateForm() {
+            var contactInput = document.getElementById("contact");
+            var contactValue = contactInput.value;
+
+            // Check if contact starts with '9' and has a maximum of 10 digits
+            if (!/^[9]\d{9}$/.test(contactValue)) {
+                alert("Contact must start with '9' and be exactly 10 digits long.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+    <style>
+        .error {
+            display: none;
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Patient Information Form</h1>
-    <form id="patientForm" action="confirm.php" method="post">
+    <form id="patientForm" action="confirm.php" method="post" onsubmit="return validateForm()">
         <!-- Your form fields here -->
         <label for="f_name">First Name:</label>
         <input type="text" id="f_name" name="f_name" required><br><br>
@@ -43,9 +77,9 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required><br><br>
 
-
         <label for="contact">Contact:</label>
-        <input type="text" id="contact" name="contact" required><br><br>
+        <input type="text" id="contact" name="contact" oninput="validateContact()" required><br><br>
+        <div id="contactError" class="error">Contact must start with '9' and be up to 10 digits long.</div>
 
         <label for="address">Address:</label>
         <input type="text" id="address" name="address"><br><br>
@@ -60,13 +94,12 @@
         <input type="text" id="hospital_name" name="hospital_name" required><br><br>
 
         <label for="disease">Disease:</label>
-        <input type="text" id="disease" name="disease"required><br><br>
+        <input type="text" id="disease" name="disease" required><br><br>
 
         <label for="form_fill_date">Form Fill Date:</label>
-        <input type="date" id="form_fill_date" name="form_fill_date" min="<?php $currentDate = date('Y-m-d'); echo $currentDate; ?>"required><br><br>
+        <input type="date" id="form_fill_date" name="form_fill_date" value="<?php echo date('Y-m-d'); ?>" readonly required><br><br>
 
         <input type="submit" value="Submit">
-
     </form>
 </body>
 

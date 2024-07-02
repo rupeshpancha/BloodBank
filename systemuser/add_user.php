@@ -1,6 +1,19 @@
 <?php
 include('connection.php');
 session_start();
+
+$un = $_SESSION['un'];
+$role_id = $_SESSION['role_id'];
+
+if (!$un || !isset($role_id)) {
+    header("Location: login.php");
+    exit; 
+}
+
+if ($role_id == '2') {
+    header("Location: login.php");
+    exit; 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,14 +127,7 @@ session_start();
         }
     </style>
 </head>
-<?php
-$un = $_SESSION['un'];
-$role_id = $_SESSION['role_id'];
-if (!$un) {
-    header("Location:login.php");
-}
 
-?>
 
 <body>
     <div class="container">
@@ -144,15 +150,15 @@ if (!$un) {
         </div>
         <div class="content">
             <h1>User Registration</h1>
-            <form action="" method="POST">
+            <form action="" method="POST" onsubmit="return validateForm()">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" placeholder="Start with letter" required>
 
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" placeholder="minimum 8 characters" required>
 
                 <label for="confirm_password">Confirm Password:</label>
-                <input type="password" id="confirm_password" name="confirm_password" required>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="minimum 8 characters" required>
 
                 <!-- <label for="email">Email:</label>
                 <input type="text" id="email" name="email" required> -->
@@ -173,7 +179,29 @@ if (!$un) {
         <button onclick="changePassword()">Change Password</button>
     </div>
 
-    
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm_password").value;
+
+            // Check if username starts with a letter
+            if (!/^[a-zA-Z]/.test(username)) {
+                alert("Username must start with a letter.");
+                return false; // Prevent form submission
+            }
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return false; // Prevent form submission
+            }
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+    </script>
     <script>
         function logout() {
             window.location.href = "logout.php"; // replace with your link
@@ -191,7 +219,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $cpassword = $_POST['confirm_password'];
-    $role_id=$_POST['role'];
+    $role_id = $_POST['role'];
 
     // SQL injection prevention: Convert special characters to HTML entities
     $username = htmlspecialchars($username);
@@ -202,7 +230,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Here you can proceed with your registration or update logic
         $sql = "INSERT INTO users (username, password,  role_id)
                 VALUES ('$username', '$password', ' $role_id')";
-    
+
         // Execute the SQL query
         if ($conn->query($sql) === TRUE) {
 
@@ -219,5 +247,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Close the connection
     $conn->close();
-} 
+}
 ?>

@@ -57,76 +57,81 @@
 
 
     <h1>Confirm Patient Information</h1>
-    <?php
-    include('test.php');
-        echo "Patient ID: " . $patientID . "<br>";
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Process form data
-        $f_name = $_POST['f_name'];
-        $m_name = $_POST['m_name'];
-        $l_name = $_POST['l_name'];
-        $gender = $_POST['gender'];
-        $bloodgroup = $_POST['bloodgroup'];
-        $email = $_POST['email'];
-        $contact = $_POST['contact'];
-        $address = $_POST['address'];
-        $file = $_POST['file'];
-        $doctor_name = $_POST['doctor_name'];
-        $hospital_name = $_POST['hospital_name'];
-        $disease = $_POST['disease'];
-        $form_fill_date = $_POST['form_fill_date'];
+    <div class="container">
+        <?php
+        include('test.php');
+            echo "Patient ID: " . $patientID . "<br>";
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Process form data
+            $f_name = $_POST['f_name'];
+            $m_name = $_POST['m_name'];
+            $l_name = $_POST['l_name'];
+            $gender = $_POST['gender'];
+            $bloodgroup = $_POST['bloodgroup'];
+            $email = $_POST['email'];
+            $contact = $_POST['contact'];
+            $address = $_POST['address'];
+            $file = $_POST['file'];
+            $doctor_name = $_POST['doctor_name'];
+            $hospital_name = $_POST['hospital_name'];
+            $disease = $_POST['disease'];
+            $form_fill_date = $_POST['form_fill_date'];
 
-        // Display the data for confirmation
-        echo "<p><strong>First Name:</strong> $f_name</p>";
-        echo "<p><strong>Middle Name:</strong> $m_name</p>";
-        echo "<p><strong>Last Name:</strong> $l_name</p>";
-        echo "<p><strong>Gender:</strong> $gender</p>";
-        echo "<p><strong>Blood Group:</strong> $bloodgroup</p>";
-        echo "<p><strong>Email:</strong> $email</p>";
-        echo "<p><strong>Contact:</strong> $contact</p>";
-        echo "<p><strong>Address:</strong> $address</p>";
-        echo "<p><strong>File:</strong> $file</p>";
-        echo "<p><strong>Doctor Name:</strong> $doctor_name</p>";
-        echo "<p><strong>Hospital Name:</strong> $hospital_name</p>";
-        echo "<p><strong>Disease:</strong> $disease</p>";
-        echo "<p><strong>Form Fill Date:</strong> $form_fill_date</p>";
+            // Display the data for confirmation
+            echo "<div class='confirm-info'>";
+            echo "<p><strong>First Name:</strong> $f_name</p>";
+            echo "<p><strong>Middle Name:</strong> $m_name</p>";
+            echo "<p><strong>Last Name:</strong> $l_name</p>";
+            echo "<p><strong>Gender:</strong> $gender</p>";
+            echo "<p><strong>Blood Group:</strong> $bloodgroup</p>";
+            echo "<p><strong>Email:</strong> $email</p>";
+            echo "<p><strong>Contact:</strong> $contact</p>";
+            echo "<p><strong>Address:</strong> $address</p>";
+            echo "<p><strong>File:</strong> $file</p>";
+            echo "<p><strong>Doctor Name:</strong> $doctor_name</p>";
+            echo "<p><strong>Hospital Name:</strong> $hospital_name</p>";
+            echo "<p><strong>Disease:</strong> $disease</p>";
+            echo "<p><strong>Form Fill Date:</strong> $form_fill_date</p>";
+            echo "</div>";
 
-        // Provide options to download PDF or confirm submission
-        echo '<form action="download_pdf.php" method="post">
-                <input type="hidden" name="f_name" value="'.$f_name.'">
-                <input type="hidden" name="m_name" value="'.$m_name.'">
-                <input type="hidden" name="l_name" value="'.$l_name.'">
-                <input type="hidden" name="gender" value="'.$gender.'">
-                <input type="hidden" name="bloodgroup" value="'.$bloodgroup.'">
-                <input type="hidden" name="email" value="'.$email.'">
-                <input type="hidden" name="contact" value="'.$contact.'">
-                <input type="hidden" name="address" value="'.$address.'">
-                <input type="hidden" name="file" value="'.$file.'">
-                <input type="hidden" name="doctor_name" value="'.$doctor_name.'">
-                <input type="hidden" name="hospital_name" value="'.$hospital_name.'">
-                <input type="hidden" name="disease" value="'.$disease.'">
-                <input type="hidden" name="form_fill_date" value="'.$form_fill_date.'">
-                <input type="submit" value="Download PDF">
-              </form>';
+            // Provide options to download PDF or confirm submission
+            echo '<div class="btn-container">';
+            echo '<form action="download_pdf.php" method="post">';
+            echo '<input type="hidden" name="f_name" value="'.$f_name.'">';
+            echo '<input type="hidden" name="m_name" value="'.$m_name.'">';
+            echo '<input type="hidden" name="l_name" value="'.$l_name.'">';
+            echo '<input type="hidden" name="gender" value="'.$gender.'">';
+            echo '<input type="hidden" name="bloodgroup" value="'.$bloodgroup.'">';
+            echo '<input type="hidden" name="email" value="'.$email.'">';
+            echo '<input type="hidden" name="contact" value="'.$contact.'">';
+            echo '<input type="hidden" name="address" value="'.$address.'">';
+            echo '<input type="hidden" name="file" value="'.$file.'">';
+            echo '<input type="hidden" name="doctor_name" value="'.$doctor_name.'">';
+            echo '<input type="hidden" name="hospital_name" value="'.$hospital_name.'">';
+            echo '<input type="hidden" name="disease" value="'.$disease.'">';
+            echo '<input type="hidden" name="form_fill_date" value="'.$form_fill_date.'">';
+            echo '<input type="submit" value="Download PDF">';
+            echo '</form>';
 
-        echo '<form action="submit.php" method="post">
-       
-                <input type="hidden" name="f_name" value="'.$f_name.'">
-                <input type="hidden" name="m_name" value="'.$m_name.'">
-                <input type="hidden" name="l_name" value="'.$l_name.'">
-                <input type="hidden" name="gender" value="'.$gender.'">
-                <input type="hidden" name="bloodgroup" value="'.$bloodgroup.'">
-                <input type="hidden" name="email" value="'.$email.'">
-                <input type="hidden" name="contact" value="'.$contact.'">
-                <input type="hidden" name="address" value="'.$address.'">
-                <input type="hidden" name="file" value="'.$file.'">
-                <input type="hidden" name="doctor_name" value="'.$doctor_name.'">
-                <input type="hidden" name="hospital_name" value="'.$hospital_name.'">
-                <input type="hidden" name="disease" value="'.$disease.'">
-                <input type="hidden" name="form_fill_date" value="'.$form_fill_date.'">
-                <input type="submit" value="Confirm">
-              </form>';
-    }
-    ?>
+            echo '<form action="submit.php" method="post">';
+            echo '<input type="hidden" name="f_name" value="'.$f_name.'">';
+            echo '<input type="hidden" name="m_name" value="'.$m_name.'">';
+            echo '<input type="hidden" name="l_name" value="'.$l_name.'">';
+            echo '<input type="hidden" name="gender" value="'.$gender.'">';
+            echo '<input type="hidden" name="bloodgroup" value="'.$bloodgroup.'">';
+            echo '<input type="hidden" name="email" value="'.$email.'">';
+            echo '<input type="hidden" name="contact" value="'.$contact.'">';
+            echo '<input type="hidden" name="address" value="'.$address.'">';
+            echo '<input type="hidden" name="file" value="'.$file.'">';
+            echo '<input type="hidden" name="doctor_name" value="'.$doctor_name.'">';
+            echo '<input type="hidden" name="hospital_name" value="'.$hospital_name.'">';
+            echo '<input type="hidden" name="disease" value="'.$disease.'">';
+            echo '<input type="hidden" name="form_fill_date" value="'.$form_fill_date.'">';
+            echo '<input type="submit" value="Confirm">';
+            echo '</form>';
+            echo '</div>';
+        }
+        ?>
+    </div>
 </body>
 </html>

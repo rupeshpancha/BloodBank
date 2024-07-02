@@ -148,20 +148,20 @@ if (!$un) {
                 echo "<label>Address:</label><textarea readonly>{$donor['address']}</textarea>";
                 echo "<label>Blood Group:</label><input type='text' value='{$donor['bloodgroup']}'readonly>";
                 echo "<label>Total donation:</label><input type='text' value='{$row['donation_count']}'readonly>";
+                echo "<label>Birth Date:</label><input type='date' value='{$donor['birth_date']}'readonly>";
                 echo "<label>Last Donate:</label><input type='date' value='{$donor['verified_date']}'readonly>";
 
                 $start_date = new DateTime($donor['verified_date']);
                 $end_date = clone $start_date;
                 $end_date->modify("+60 days");
-        
+                
                 // Calculate the difference in days
                 $now = new DateTime();
                 $interval = $now->diff($end_date);
-                $total_days = $interval->format('%a');
+                $total_days = $interval->format('%r%a'); // Include the sign of the difference (+ or -)
                 
-                if ($total_days==0) {
-                    # code...
-                    echo "<input type='submit' value='Donate Again' >";
+                if ($total_days <= 0) {
+                    echo "<input type='submit' value='Donate Again'>";
                 }
                 else
                 echo "<label>Days until next donation:</label><input type='text' value='{$total_days}' readonly>";

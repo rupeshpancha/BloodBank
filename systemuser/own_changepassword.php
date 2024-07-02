@@ -106,7 +106,7 @@ if (!$un) {
 <body>
     <div class="container">
         <h1>Change Password</h1>
-        <form id="changePasswordForm" action="changepassword.php" method="post">
+        <form id="changePasswordForm" action="changepassword.php" method="post" onsubmit="return validateForm()">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" value="<?php echo"$un" ?>" required readonly><br><br>
 
@@ -127,18 +127,37 @@ if (!$un) {
         Logged in as <span id="username"><?php echo $un ?></span>
         <button onclick="logout()">Logout</button>
     </div>
-
     <script>
-        document.getElementById("changePasswordForm").onsubmit = function() {
-            var newPassword = document.getElementById("new_password").value;
-            var confirmPassword = document.getElementById("confirm_password").value;
+    function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("new_password").value;
+        var confirmPassword = document.getElementById("confirm_password").value;
 
-            if (newPassword !== confirmPassword) {
-                alert("New passwords do not match. Please enter them again.");
-                return false; // Prevent form submission
-            }
-            return true; // Allow form submission
-        };
+        // Check if username starts with a letter
+
+        if (password.length < 8) {
+            alert("Password must be at least 8 characters long.");
+            return false; // Prevent form submission
+        }
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    }
+</script>
+    <script>
+        // document.getElementById("changePasswordForm").onsubmit = function() {
+        //     var newPassword = document.getElementById("new_password").value;
+        //     var confirmPassword = document.getElementById("confirm_password").value;
+
+        //     if (newPassword !== confirmPassword) {
+        //         alert("New passwords do not match. Please enter them again.");
+        //         return false; // Prevent form submission
+        //     }
+        //     return true; // Allow form submission
+        // };
 
         function logout() {
             window.location.href = "logout.php"; // replace with your link

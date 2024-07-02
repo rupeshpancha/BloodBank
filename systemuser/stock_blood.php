@@ -204,9 +204,10 @@ if (!$un) {
             window.location.href = "logout.php"; // replace with your link
         }
 
+        
         function changePassword() {
-            console.log('Change password functionality');
-        }
+                window.location.href = "own_changepassword.php";
+            }
     </script>
 </body>
 

@@ -1,6 +1,19 @@
 <?php
 include('connection.php');
 session_start();
+
+$un = $_SESSION['un'];
+$role_id = $_SESSION['role_id'];
+
+if (!$un || !isset($role_id)) {
+    header("Location: login.php");
+    exit; 
+}
+
+if ($role_id == '2') {
+    header("Location: login.php");
+    exit; 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,15 +118,7 @@ session_start();
         }
     </style>
 </head>
-<?php
-$un = $_SESSION['un'];
-$role_id = $_SESSION['role_id'];
 
-if (!$un) {
-    header("Location:login.php");
-}
-
-?>
 
 <body>
     <div class="container">
@@ -197,9 +202,10 @@ if (!$un) {
             window.location.href = "logout.php"; // replace with your link
         }
 
+       
         function changePassword() {
-            console.log('Change password functionality');
-        }
+                window.location.href = "own_changepassword.php";
+            }
     </script>
 </body>
 

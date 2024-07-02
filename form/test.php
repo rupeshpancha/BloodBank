@@ -1,5 +1,4 @@
 <?php
-// Assuming you have already connected to your MySQL database
 
 // Prepare the SQL query to fetch the last row from the patient table
 include('../conn.php');
@@ -25,11 +24,7 @@ if ($result) {
         $patientID = (int)$patientID;
         $patientID++;
 
-        // Now you can use the fetched data as needed
-        // echo "Patient ID: " . $patientID+1 . "<br>";
-        // echo "Name: " . $name . "<br>";
-        // echo "Date of Birth: " . $dob . "<br>";
-        // Output additional fields here
+       
     } 
     // else {
     //     echo "No data found in the patient table.";

@@ -168,6 +168,9 @@ if (isset($_SESSION['success_message'])) {
 
                             <label for="l_name">Last Name:</label>
                             <input type="text" id="l_name" name="l_name" value="<?php echo $row['l_name']; ?>" required><br><br>
+                            
+                            <label for="DOB">Date: Of Birth</label>
+                            <input type="date" id="DOB" name="DOB" value="<?php echo $row['birth_date']; ?>"><br><br>
 
                             <label for="gender">Gender:</label>
                             <select id="gender" name="gender" required>

@@ -74,6 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: index.php");
         } else {
             $_SESSION["un"] = $username;
+            $_SESSION["role_id"] = $user['role_id'];
             header("Location: donor_info.php");
         }
        

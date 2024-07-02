@@ -42,6 +42,11 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 // Redirect back to index page
-header('Location: ../index.php');
+echo"<script>
+
+alert('form submitted sucess');
+    window.location.href = '../index.php';
+
+</script>";
 exit;
 ?>
